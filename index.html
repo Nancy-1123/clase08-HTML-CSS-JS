@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        /* Estilos opcionales */
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .calculator-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+        }
+        .calculator-buttons button {
+            padding: 10px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 50% 50%;
+            background-color: #666666;
+            padding: 10px;
+            }
+            .grid-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            font-size: 30px;
+            text-align: center;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="grid-container">
+            <div class="grid-item">
+                <div class="calculator-buttons">
+                    <button onclick="addValue('1')">1</button>
+                    <button onclick="addValue('2')">2</button>
+                    <button onclick="addValue('3')">3</button>
+                    <button onclick="addValue('4')">4</button>
+                    <button onclick="addValue('5')">5</button>
+                    <button onclick="addValue('6')">6</button>
+                    <button onclick="addValue('7')">7</button>
+                    <button onclick="addValue('8')">8</button>
+                    <button onclick="addValue('9')">9</button>
+                    <button onclick="addValue('0')">0</button>
+                    <button onclick="addValue('+')">+</button>
+                    <button onclick="addValue('-')">-</button>
+                    <button onclick="addValue('*')">*</button>
+                    <button onclick="clearValue()">C</button>
+                    <button onclick="calculateResult()">=</button>
+                    <button onclick="addValue('/')">/</button>
+                </div>
+            </div>
+            <div class="grid-item">
+                <div id="initialValue">
+                    <!-- Aquí se mostrará el initialValue de las operaciones -->
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Funciones JavaScript para manipular la calculadora
+        let initialValue = document.getElementById('initialValue');
+
+        function addValue(value) {
+            initialValue.textContent += value;
+        }
+
+        function clearValue() {
+            initialValue.textContent = '0';
+        }
+
+        function calculateResult() {
+            try {
+                initialValue.textContent = eval(initialValue.textContent);
+            } catch (error) {
+                initialValue.textContent = 'Error';
+            }
+        }
+    </script>
+
+</body>
+</html>
